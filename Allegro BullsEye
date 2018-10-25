@@ -1,0 +1,31 @@
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
+
+
+int main() {
+
+	ALLEGRO_DISPLAY *display = NULL;
+
+	al_init();
+	al_init_primitives_addon();
+
+	display = al_create_display(900, 900);
+
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+
+	al_draw_filled_circle(450, 450, 400, al_map_rgb(150, 0, 0));
+	al_draw_filled_circle(450, 450, 300, al_map_rgb(0, 0, 85));
+	al_draw_filled_circle(450, 450, 200, al_map_rgb(150, 0, 0));
+	al_draw_filled_circle(450, 450, 100, al_map_rgb(0, 0, 85));
+	al_draw_filled_circle(450, 450, 50, al_map_rgb(150, 0, 0));
+
+
+	al_flip_display();
+
+	al_rest(100.0);
+
+	al_destroy_display(display);
+
+	return 0;
+
+}
