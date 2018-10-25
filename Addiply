@@ -1,0 +1,53 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+void main() {
+	int Number1;
+	int Number2;
+	int Add;
+	int Multiply;
+	int loop;
+	string line;
+	ofstream Bob;
+	Bob.open("Prob01.in.txt");
+	cout << "How many times do you want to run this program?" << endl;
+	cin >> loop;
+	cout << "choose two numbers" << endl;
+	for (int i = 0; i < loop; i++) {
+		cout << "First Number" << endl;
+		cin >> Number1;
+		cout << "Second number" << endl;
+		cin >> Number2;
+		cout << endl;
+
+		Add = Number1 + Number2;
+		Multiply = Number1 * Number2;
+
+		Bob << Number1;
+		Bob << " ";
+		Bob << Number2 << endl;
+
+		Bob << Add;
+		Bob << " ";
+		Bob << Multiply << endl;
+		Bob << " " << endl;
+		Bob << " " << endl;
+	}
+	Bob.close();
+
+	ifstream Bob1("Prob01.in.txt");
+	if (Bob1.is_open()) {
+		while (getline(Bob1, line)) {
+			cout << line << endl;
+		}
+		Bob1.close();
+	}
+	else
+		cout << "Unable to open" << endl;
+
+	system("pause");
+
+
+}
