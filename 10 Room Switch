@@ -1,0 +1,194 @@
+#include <iostream>
+#include <String>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+using namespace std;
+string input;
+int room = 1;
+
+int main(int argc, char **argv) {
+	ALLEGRO_DISPLAY *display = NULL;
+
+	ALLEGRO_BITMAP *image = NULL;
+
+	al_init();
+	al_init_image_addon();
+	al_load_bitmap("agent.jpg");
+	display = al_create_display(400, 400);
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+
+	image = al_load_bitmap("agent.jpg");
+	al_draw_bitmap(image, 0, 0, 0);
+	al_flip_display();
+
+	system("pause");
+	cout << "As FBI Agent, you have a job." << endl;
+	cout << "To go into russian military base and steal a file" << endl;
+	system("pause");
+	cout << "This isnt no ordinary base, it's highly advance with weapons and trained soliders" << endl;
+	cout << "Yu are going to find a way to get into the base" << endl;
+	cout << "Find the file and get out of there" << endl;
+	system("pause");
+	cout << "The file is secure in advance vault, you would need a class 5 access card" << endl;
+	cout << "Steal one from a soilder" << endl;
+	system("pause");
+	cout << "you would be going at night, so atleast one soilder should be asleep" << endl;
+	system("pause");
+	cout << "Good luck " << endl;
+
+	while (input.compare("Quit") != 0) {
+		switch (room) {
+
+		case 1:
+			al_destroy_display(display);
+			display = al_create_display(446, 459);
+			image = al_load_bitmap("BackDoor.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 1" << endl;
+			cout << "You can go South" << endl;
+			getline(cin, input);
+			if (input.compare("South") == 0 || input.compare("south") == 0)
+				room = 2;
+			break;
+
+		case 2:
+			al_destroy_display(display);
+			display = al_create_display(357, 446);
+			image = al_load_bitmap("hallway.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 2" << endl;
+			cout << "You can go North or South" << endl;
+			getline(cin, input);
+			if (input.compare("South") == 0 || input.compare("south") == 0)
+				room = 3;
+			else if (input.compare("North") == 0 || input.compare("north") == 0)
+				room = 1;
+			break;
+
+		case 3:
+			al_destroy_display(display);
+			display = al_create_display(299, 450);
+			image = al_load_bitmap("Twoway.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 3" << endl;
+			cout << "You can go North, South, or East" << endl;
+			getline(cin, input);
+			if (input.compare("South") == 0 || input.compare("south") == 0)
+				room = 6;
+			else if (input.compare("East") == 0 || input.compare("east") == 0)
+				room = 4;
+			else if (input.compare("North") == 0 || input.compare("north") == 0)
+				room = 2;
+			break;
+
+		case 4:
+			al_destroy_display(display);
+			display = al_create_display(720, 720);
+			image = al_load_bitmap("hallway4.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 4" << endl;
+			cout << "You can go East or West" << endl;
+			getline(cin, input);
+			if (input.compare("West") == 0 || input.compare("west") == 0)
+				room = 3;
+			else if (input.compare("East") == 0 || input.compare("east") == 0)
+				room = 5;
+			break;
+
+		case 5:
+			al_destroy_display(display);
+			display = al_create_display(800, 531);
+			image = al_load_bitmap("Room5.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 5" << endl;
+			cout << "You can go West" << endl;
+			getline(cin, input);
+			if (input.compare("West") == 0 || input.compare("west") == 0)
+				room = 4;
+			break;
+
+		case 6:
+			al_destroy_display(display);
+			display = al_create_display(700, 500);
+			image = al_load_bitmap("room6.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 6" << endl;
+			cout << "You can go North or West" << endl;
+			getline(cin, input);
+			if (input.compare("North") == 0 || input.compare("north") == 0)
+				room = 3;
+			else if (input.compare("West") == 0 || input.compare("west") == 0)
+				room = 7;
+			break;
+
+		case 7:
+			al_destroy_display(display);
+			display = al_create_display(612, 408);
+			image = al_load_bitmap("Room7.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 7" << endl;
+			cout << "You can go South, East, West " << endl;
+			getline(cin, input);
+			if (input.compare("East") == 0 || input.compare("east") == 0)
+				room = 6;
+
+			else if (input.compare("West") == 0 || input.compare("west") == 0)
+				room = 9;
+			else if (input.compare("South") == 0 || input.compare("south") == 0)
+				room = 8;
+			break;
+
+		case 8:
+			al_destroy_display(display);
+			display = al_create_display(640, 426);
+			image = al_load_bitmap("room8.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 8" << endl;
+			cout << "You can go North" << endl;
+			getline(cin, input);
+			if (input.compare("North") == 0 || input.compare("north") == 0)
+				room = 7;
+			break;
+
+		case 9:
+			al_destroy_display(display);
+			display = al_create_display(800, 518);
+			image = al_load_bitmap("vault.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 9" << endl;
+			cout << "You can go North or East" << endl;
+			getline(cin, input);
+			if (input.compare("East") == 0 || input.compare("east") == 0)
+				room = 7;
+			else if (input.compare("North") == 0 || input.compare("north") == 0)
+				room = 10;
+			break;
+
+		case 10:
+			al_destroy_display(display);
+			display = al_create_display(275, 183);
+			image = al_load_bitmap("inside.jpg");
+			al_draw_bitmap(image, 0, 0, 0);
+			al_flip_display();
+			cout << "You're in Room 10" << endl;
+			cout << "You can go South" << endl;
+			getline(cin, input);
+			if (input.compare("South") == 0 || input.compare("south") == 0)
+				room = 9;
+			break;
+		}
+		al_draw_bitmap(image, 0, 0, 0);
+		al_flip_display();
+	}
+	al_destroy_display(display);
+	return 0;
+}
