@@ -1,0 +1,42 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+int num;
+int input;
+char playagain;
+int score = 0;
+bool finish = false;
+int main() {
+	srand(time(NULL));
+	int num = rand() % 100 + 1;
+	//	cout << num << endl;
+	while (true) {
+		cout << "Guess the Number" << endl;
+		cin >> input;
+		if (input == num) {
+			cout << "You got it correct" << endl;
+			cout << "You took " << score << " Turns!" << endl;
+			cout << "Want to play again? Y/N" << endl;
+			cin >> playagain;
+			if (playagain == 'Y' || playagain == 'y') {
+				finish = true;
+			}
+			else {
+				exit(0);
+			}
+		}
+		else if (input > num) {
+			score++;
+			cout << "Too High" << endl;
+		}
+		else if (input < num) {
+			score++;
+			cout << "Too Low" << endl;
+		}
+		if (finish == true) {
+			num = rand() % 100 + 1;
+			score = 0;
+			finish = false;
+		}
+	}
+}
