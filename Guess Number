@@ -1,42 +1,48 @@
+//Fernando Gonzalez
 #include <iostream>
 #include <ctime>
 using namespace std;
-int num;
-int input;
-char playagain;
-int score = 0;
-bool finish = false;
+//Creating variables/////////////////
+int num; //The number that you have to guess
+int input; //Number that you're putting to check if it's num or not
+char playagain; // variable used to see if the player wants to play again or not
+int score = 0; //the varable for the number of turns you took guessing the number
+bool finish = false; //used to restart the game or not
+///////////////////////
 int main() {
 	srand(time(NULL));
-	int num = rand() % 100 + 1;
-	//	cout << num << endl;
+	int num = rand() % 100 + 1; //generate a number
 	while (true) {
 		cout << "Guess the Number" << endl;
 		cin >> input;
+		////////////////
 		if (input == num) {
 			cout << "You got it correct" << endl;
 			cout << "You took " << score << " Turns!" << endl;
 			cout << "Want to play again? Y/N" << endl;
-			cin >> playagain;
+			cin >> playagain;//input to see if they want to play again
 			if (playagain == 'Y' || playagain == 'y') {
 				finish = true;
 			}
 			else {
-				exit(0);
+				exit(0); //exits the game, shutting it down
 			}
 		}
+		////////////////
 		else if (input > num) {
-			score++;
-			cout << "Too High" << endl;
-		}
+			score++; // adds a number to the turn
+			cout << "Too High" << endl; }
+		////////////////
 		else if (input < num) {
-			score++;
-			cout << "Too Low" << endl;
-		}
+			score++;// adds a number to the turn
+			cout << "Too Low" << endl; }
+		////////////////
+		//Restarts the whole thing, creating an new guess number and restart the turns
 		if (finish == true) {
 			num = rand() % 100 + 1;
 			score = 0;
-			finish = false;
+			finish = false; // this make sure it doesn't always restarts the variable
 		}
-	}
-}
+		////////////////
+	}//While Loop
+}//Main Loop
