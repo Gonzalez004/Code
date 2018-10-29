@@ -1,0 +1,9 @@
+#include <fstream>
+using namespace std;
+int main() {
+	ofstream MyFile;
+	MyFile.open("Save1.txt");
+	MyFile << "Hola.\n";
+	MyFile.close();
+	return 0;
+}
