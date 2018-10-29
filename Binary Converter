@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+
+int BinaryToDecimal(int n);
+
+int main() {
+	int num;
+	cout << "Enter 1 or 0 Number(s)" << endl;
+	cin >> num;
+	cout << BinaryToDecimal(num) << endl;
+	system("pause");
+}
+int BinaryToDecimal(int n) {
+	int Dec = 0;
+
+	int Base = 1;
+
+	int temp = n;
+	while (temp)
+	{
+		int Rem = temp % 10;
+		temp = temp / 10;
+		Dec = Dec + Rem * Base;
+		Base = Base * 2;
+	}
+
+	return Dec;
+}
