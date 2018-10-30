@@ -1,0 +1,26 @@
+//Fernando Gonzalez
+#include <iostream>
+#include <string>
+using namespace std;
+bool HasGame = false;
+int main() {
+	string list[12];
+	cout << "Enter 12 of your favorite games!" << endl;
+	for (int i = 0; i < 12; i++) {
+		getline(cin, list[i]);
+	}
+
+	for (int i = 0; i < 12; i++) {
+		if (list[i].compare("BUBBLE BOBBLE") == 0 || list[i].compare("Bubble Bobble") == 0 || list[i].compare("bubble bobble") == 0) {
+			HasGame = true;
+		}
+	}
+	if (HasGame == true) {
+		cout << endl;
+		cout << "You're Awesome!" << endl;
+	}
+	else { cout << endl; cout << "You should play BUBBLE BOBBLE" << endl; }
+	
+	system("pause");
+	return 0;
+}
