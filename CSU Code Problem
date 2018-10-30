@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+double dist(int a, int b);
+double x3;
+double x4;
+double x5;
+double x6;
+int c;
+int d;
+int main() {
+	int x1, x2;
+	cout << "Put in your two numbers" << endl;
+	cin >> x1;
+	cin >> x2;
+	dist(x1, x2);
+}
+double dist(int a, int b) {
+	double x3 = a;
+	double x4 = b;
+	c = x3;
+	d = x4;
+	////////////////////////////////////////////////////////////////////////
+	double temp1 = x3 / x4;
+	cout << "The division of these two numbers equal " << temp1 << endl;
+	//////////////////////////////////////////
+	double x5 = a;
+	double x6 = b;
+	double temp2 = x5 - x6;
+	cout << "The subtraction of these two numbers equal " << temp2 << endl;
+	///////////////////////////////////////////////////
+	if (x3 == 42) {
+		cout << "You got the answer!!!" << endl;
+	}
+	else if (x4 == 42) {
+		cout << "You got the answer!!!" << endl;
+	}
+	else {
+		cout << "You didn't get the MAGIC number" << endl;
+	}
+	/////////////////////////////////////////////////////////////////////
+	if (c % 6 == 0) {
+		cout << "Your first number is divisible by 6" << endl;
+	}
+	else if (d % 6 == 0) {
+		cout << "Your second number is divisible by 6" << endl;
+	}
+	else if ((c % 6 == 0) && (d % 6 == 0)) {
+		cout << "Both numbers are divisible by 6" << endl;
+	}
+	else { cout << "No numbers are divisible by 6" << endl; }
+
+	return 0;
+
+}
