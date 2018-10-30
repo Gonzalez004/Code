@@ -1,0 +1,98 @@
+#include <iostream>
+char calculate(int x, int y);
+int room = 0;
+double number;
+char input;
+int a, b;
+using namespace std;
+int main() {
+	cout << "Put in two numbers" << endl;
+	cin >> a;
+	cout << "&" << endl;
+	cin >> b;
+	calculate(a, b);
+}
+char calculate(int x, int y) {
+	while (true) {
+		switch (room) {
+		case 0:
+			cout << "What do you want to do to these two numbers?" << endl;
+			cout << "Add(a), Subtract(s), Multiply(m), Divide(d), or Find the remainder of the other two numbers passed to it(r)" << endl;
+			cin >> input;
+			if (input == 'a') {
+				room = 1;
+			}
+			else if (input == 's') {
+				room = 2;
+			}
+			else if (input == 'm') {
+				room = 3;
+			}
+			else if (input == 'd') {
+				room = 4;
+			}
+			else if (input == 'r') {
+				room = 5;
+			}
+			else {
+				cout << "Error: Unknow Input" << endl;
+				cout << "Try again" << endl;
+				room = 0;
+			}
+			break;
+		case 1:
+			cout << "You choose Add. Great!" << endl;
+			cout << "Adding your two numbers " << x << " & " << y << endl;
+			number = x + y;
+			cout << "The additiion equals " << number << endl;
+			cout << endl;
+			system("pause");
+			room = 6;
+			break;
+		case 2:
+			cout << "You choose Subtract. Great!" << endl;
+			cout << "Subtracting your two numbers " << x << " & " << y << endl;
+			number = x - y;
+			cout << "The Subtraction equals " << number << endl;
+			cout << endl;
+			system("pause");
+			room = 6;
+			break;
+		case 3:
+			cout << "You choose Multiply. Great!" << endl;
+			cout << "Multiplying your two numbers " << x << " & " << y << endl;
+			number = x * y;
+			cout << x << " & " << y << " multiplies to " << number << endl;
+			cout << endl;
+			system("pause");
+			room = 6;
+			break;
+		case 4:
+			cout << "You choose Divide. Great!" << endl;
+			cout << "Dividing your two numbers " << x << " & " << y << endl;
+			number = x / y;
+			cout << x << " & " << y << " divides to " << number << endl;
+			cout << endl;
+			system("pause");
+			room = 6;
+			break;
+		case 5:
+			cout << "Finding  the remainder two numbers" << endl;
+			number = x % y;
+			cout << x << " & " << y << " remains to " << number << endl;
+			cout << endl;
+			system("pause");
+			room = 6;
+			break;
+		case 6:
+			cout << "Lets do another math" << endl;
+			cout << "Put in two numbers" << endl;
+			cin >> x;
+			cout << "&" << endl;
+			cin >> y;
+			room = 0;
+			break;
+		}
+	}
+	return 0;
+}
