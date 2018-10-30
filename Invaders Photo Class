@@ -1,0 +1,58 @@
+#include <allegro5\allegro.h>
+#include <allegro5\allegro_image.h>
+
+/*Write class Invader.
+Each Invader object has a position and HP.
+Instantiate several Invader objects to your game window.
+Use this image :
+*/
+class Invaders {
+public:
+	void InitiPic(int Xpos, int Ypos, int HP);
+	void Draw(ALLEGRO_BITMAP *Image);
+private:
+	int x;
+	int y;
+	int hp;
+};
+
+
+int main() {
+	al_init(); //Set up Allegro
+	al_init_image_addon(); //Set up Images
+	ALLEGRO_BITMAP *Photo1 = al_load_bitmap("Space.jpg"); //loads bitmap from folders
+	ALLEGRO_DISPLAY *GameWindow = NULL; //Create a Display Window
+	GameWindow = al_create_display(920, 920); //Create Your Game Window
+	al_set_window_position(GameWindow, 0, 0); //Positions Widnow on Screen
+	al_set_window_title(GameWindow, "Ferny's Game"); //Window Title
+
+	Invaders Space1;
+	/*Invaders Space2;
+	Invaders Space3;
+	Invaders Space4;
+	Invaders Space5;
+	Invaders Space6;
+	Invaders Space7;*/
+
+
+	/////////////////////////////////////////////////////////////////////////
+	//Render Section
+	/////////////////////////////////////////////////////////////////////////
+	al_clear_to_color(al_map_rgb(0, 0, 0)); //Set GameWIndow Color
+	Space1.InitiPic(100, 100, 100);
+	Space1.Draw(Photo1);
+	al_flip_display(); //Write whatever is in memory to the screen
+
+	al_rest(10); //Pauses Game
+
+	al_destroy_display(GameWindow); //Clear Memory
+}
+void Invaders::InitiPic(int Xpos, int Ypos, int HP) {
+	x = Xpos;
+	y = Ypos;
+	hp = HP;
+}
+void Invaders::Draw(ALLEGRO_BITMAP *image) {
+	al_draw_bitmap(image, x, y, hp);
+
+}
