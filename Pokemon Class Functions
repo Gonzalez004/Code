@@ -1,0 +1,148 @@
+#include <iostream>
+#include <ctime>
+#include <string>
+using namespace std;
+
+class Pokemon {
+public:
+	void Eat(char FoodType);
+	void poke(string N, char T, int I, string Nn, string A, int H);
+private:
+	char Type;
+	int Index;
+	int health;
+	string Names;
+	string Nickname;
+	string Abilities;
+};
+char input;
+char foodDrop(char place);
+int main() {
+	srand(time(NULL));
+	while (true) {
+		Pokemon Charmander;
+		Pokemon Bulbasaur;
+		Pokemon Squirtle;
+		Pokemon Magikarp;
+		cout << "Where are you ?" << endl;
+		cout << endl;
+		cout << "Desert(D)" << endl;
+		cout << "Forest(F)" << endl;
+		cin >> input;
+		if (input == 'D' || input == 'd') {
+			cout << "What Pokemon do you want?" << endl;
+			cout << endl;
+			cout << "Charmander(C)" << endl;
+			cout << "Bulbasaur(B)" << endl;
+			cout << "Squirtle(S)" << endl;
+			cout << "Magikarp(M)" << endl;
+			cin >> input;
+			if (input == 'C' || input == 'c') {
+				Charmander.poke("Charmander", 'F', 004, "Firow", "Blaze", 100);
+				Charmander.Eat(foodDrop('d'));
+			}
+			if (input == 'B' || input == 'b') {
+				Bulbasaur.poke("Bulbasaur", 'G', 001, "Leafy", "Overgrow", 100);
+				Bulbasaur.Eat(foodDrop('d'));
+			}
+			if (input == 'S' || input == 's') {
+				Squirtle.poke("Squirtle", 'W', 007, "Zeni", "Torrent", 100);
+				Squirtle.Eat(foodDrop('d'));
+			}
+			if (input == 'M' || input == 'm') {
+				Magikarp.poke("Magikarp", 'W', 129, "God", "Splash", 100);
+				Magikarp.Eat(foodDrop('d'));
+			}
+		}
+		if (input == 'F' || input == 'f') {
+			cout << "What Pokemon do you want?" << endl;
+			cout << endl;
+			cout << "Charmander(C)" << endl;
+			cout << "Bulbasaur(B)" << endl;
+			cout << "Squirtle(S)" << endl;
+			cout << "Magikarp(M)" << endl;
+			cin >> input;
+			if (input == 'C' || input == 'c') {
+				Charmander.poke("Charmander", 'F', 004, "Firow", "Blaze", 100);
+				Charmander.Eat(foodDrop('f'));
+			}
+			if (input == 'B' || input == 'b') {
+				Bulbasaur.poke("Bulbasaur", 'G', 001, "Leafy", "Overgrow", 100);
+				Bulbasaur.Eat(foodDrop('f'));
+			}
+			if (input == 'S' || input == 's') {
+				Squirtle.poke("Squirtle", 'W', 007, "Zeni", "Torrent", 100);
+				Squirtle.Eat(foodDrop('f'));
+			}
+			if (input == 'M' || input == 'm') {
+				Magikarp.poke("Magikarp", 'W', 129, "God", "Splash", 100);
+				Magikarp.Eat(foodDrop('f'));
+			}
+		}
+	}
+	system("pause");
+}
+void Pokemon::poke(string N, char T, int I, string Nn, string A, int H) {
+	Names = N;
+	Type = T;
+	Index = I;
+	Nickname = Nn;
+	Abilities = A;
+	health = H;
+	cout << "You choose " << Names << endl;
+	cout << "His type is " << Type << endl;
+	cout << "His index number is " << Index << endl;
+	cout << "Your pokemon nickname is " << Nickname << endl;
+	cout << "His Ability is " << Abilities << endl;
+	cout << "His Health is " << health << endl;
+	cout << endl;
+}
+void Pokemon::Eat(char FoodType) {
+	if (FoodType == 'm') {
+		health += 1;
+		cout << "Your pokemon health is " << health << endl;
+	}
+	else if (FoodType == 'b') {
+		health += 10;
+		cout << "Your pokemon health is " << health << endl;
+	}
+	else if (FoodType == 'c') {
+		health += 25;
+		cout << "Your pokemon health is " << health << endl;
+	}
+	else if (FoodType == 'f') {
+		health += 50;
+		cout << "Your pokemon health is " << health << endl;
+	}
+}
+
+char foodDrop(char place) {
+	//forest food drop chance
+	if (place == 'f') {
+		int map = rand() % 2 + 1;
+		if (map == 1) {
+			cout << "Mushroom + 1" << endl;
+			return 'm';
+		}
+		else {
+			cout << "Berry + 10" << endl;
+			return 'b';
+		}
+	}
+	//desert food drop chance
+	if (place == 'd') {
+		int map = rand() % 100 + 1;
+		if (map < 20) {
+			cout << "Berry + 10" << endl;
+			return 'b';
+		}
+		if (map < 60) {
+			cout << "Fruits + 50" << endl;
+			return 'f';
+		}
+		else {
+			cout << "Cheese + 25" << endl;
+			return 'c';
+		}
+	}
+}
