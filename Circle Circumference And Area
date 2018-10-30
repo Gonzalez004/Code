@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	double radius;
+	double area;
+	double circumference;
+	while (true) {
+		cout << "What is the radius of the circle?" << endl;
+		cin >> radius;
+		area = (radius * radius)* 3.14;
+		circumference = (radius*3.14) * 2;
+		cout << "The area of the circle is " << area << endl;
+		cout << "The circumference of the circle is " << circumference << endl;
+
+	}
+	return 0;
+
+}
