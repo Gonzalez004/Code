@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
+
+int main() {
+
+	al_init();
+	al_init_font_addon(); // initialize the font addon
+	al_init_ttf_addon();// initialize the ttf (True Type Font) addon
+	int x, y;
+	ALLEGRO_DISPLAY *display = al_create_display(640, 480);
+	ALLEGRO_FONT *font = al_load_ttf_font("horrendo.ttf", 24, 0);
+
+
+	while (1) {
+		x = rand() % 500;
+		y = rand() % 500;
+
+
+
+		//al_clear_to_color(al_map_rgb(50, 10, 70));
+		al_draw_text(font, al_map_rgb(x, y, x + y), x, y, 0, "I don't know!");
+
+		al_flip_display();
+
+		al_rest(1.0);
+	}
+	al_destroy_display(display);
+
+	return 0;
+}
+
+
+//#include <allegro5/allegro.h>
+//#include <allegro5/allegro_font.h>
+//#include <allegro5/allegro_ttf.h>
+//#include <ctime>
+//#include <string>
+//#include <iostream>
+//using namespace std;
+//string input;
+//int x;
+//int y;
+//
+//int main() {
+//	
+//	ALLEGRO_DISPLAY *display = NULL;
+//	ALLEGRO_FONT *font = NULL;
+//	srand(time(NULL));
+//
+//	al_init();
+//	al_init_font_addon();
+//	al_init_ttf_addon();
+//	//while (input.compare("quit") != 0) {
+//		x = rand() % 500;
+//		y = rand() % 500;
+//
+//		display = al_create_display(500, 500);
+//	
+//
+//		font = al_load_ttf_font("horrendo.tff", 24, 0);
+//		//ALLEGRO_FONT *al_load_font("Doctor Russel.tff", 24, 0);
+//		//ALLEGRO_FONT* font = al_load_font("Doctor Russel.tff", 24, 0);
+//		//ALLEGRO_FONT* font = al_create_builtin_font();
+//
+//		if (font == NULL)
+//			cout << "OOOOPS" << endl;
+//
+//		al_clear_to_color(al_map_rgb(0, 0, 0));
+//
+//		al_draw_text(font, al_map_rgb(125, 55, 25), x, y, 0, "Hello World");
+//
+//
+//		al_flip_display();
+//
+//		al_rest(2.0);
+//	
+//		al_destroy_display(display);
+//
+//		return 0;
+//
+//}
