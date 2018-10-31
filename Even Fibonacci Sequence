@@ -1,0 +1,28 @@
+// Fibonacci sequence
+#include <iostream>
+using namespace std;
+unsigned long long i;
+unsigned long long Num = 0;
+int Sum;
+unsigned long long First = 0;
+unsigned long long Second = 1;
+int main() {
+
+	for (int i = 0; i < 4000000; i++) {
+		if (i<=1) {
+			Sum = i;
+		}
+		else {
+			Sum = First + Second;
+			First = Second;
+			Second = Sum;
+		}
+		//cout << Sum << endl;
+	
+		
+		if (Sum % 2 == 0) {
+		Num += Sum;
+		}
+	}
+	cout << Num << "  ";
+}
