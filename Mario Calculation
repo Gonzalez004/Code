@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+double Score(int Timeleft, int Coins, int FlagPole);
+int main() {
+	double a;
+	double b;
+	double c;
+	cout << "Enter the time you had left at the end of the game" << endl;
+	cin >> a;
+	cout << "Enter the amount of coins you have left at the end of the game" << endl;
+	cin >> b;
+	cout << "Enter your score you got on the FlagPole at the end of the game" << endl;
+	cin >> c;
+	cout << "Your final score is " << Score(a, b, c) << "!" << endl;
+	system("pause");
+	return 0;
+}
+double Score(int Timeleft, int Coins, int FlagPole) {
+	double FP = FlagPole * 5;
+	double C = Coins * 3;
+	double Calulation = Timeleft + FP + C;
+	return Calulation;
+}
