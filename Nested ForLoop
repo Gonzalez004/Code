@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	for (int i = 0; i < 8; i++) {
+		for (int f = 0; f < 2; f++)
+			cout << "*";
+			cout << endl;
+	}
+	system("pause");
+	for (int i = 0; i < 2; i++) {
+		for (int f = 0; f < 8; f++)
+			cout << "*";
+		cout << endl;
+	}
+	system("pause");
+}
