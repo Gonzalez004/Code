@@ -1,0 +1,26 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+int inventory[100];
+int num;
+bool FortyTwo = false;
+int main() {
+	srand(time(NULL));
+	for (int i = 0; i < 100; i++) {
+		num = rand() % 50 + 1;
+		inventory[i] = num;
+		if (inventory[i] == 42) {
+			FortyTwo = true;
+		}
+	}
+	for (int i = 0; i < 100; i++) {
+		cout << inventory[i] << " , ";
+	}
+	cout << endl << endl;
+	if (FortyTwo = true) {
+		cout << "Forty-Two!" << endl;
+	}
+	else
+		cout << "No Forty-Two..." << endl;
+	system("pause");
+}
