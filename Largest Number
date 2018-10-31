@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int inventory[10];
+int arrow;
+int Large = 0;
+int index = 0;
+int main() {
+	for (int i = 0; i <= 10; i++) {
+		cout << "Put in 10 integers Please. Por Favor" << (i + 1) << endl;
+		cin >> arrow;
+		inventory[i] = arrow;
+	}
+	for (int i = 0; i <= 10; i++) {
+		if (inventory[i] >= Large) {
+			Large = inventory[i];
+			index = i + 1;
+		}
+	}
+	cout << "The Largest Number is " << Large << endl;
+	cout << "The Index is:" << index << endl;
+	system("pause");
+	return 0;
+}
