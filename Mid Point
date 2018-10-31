@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+
+double Dist(int a, int b, int c, int d);
+
+int main() {
+
+	int x1, y1, x2, y2;
+	cout << "Enter your 2 points, to find the midpoint" << endl;
+	system("pause");
+	cout << "Enter your first point" << endl;
+	cin >> x1;
+	cin >> y1;
+	cout << "Enter your second point" << endl;
+	cin >> x2;
+	cin >> y2;
+	Dist(x1, y1, x2, y2);
+
+}
+
+	double Dist(int a, int b, int c, int d) {
+		int temp1 = (a + c) / 2;
+
+		int temp2 = (b + d) / 2;
+
+		cout << "The midpoint is " << temp1 << "," << temp2 << endl;
+
+		return 0;
+	}
