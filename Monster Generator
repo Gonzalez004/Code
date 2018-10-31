@@ -1,0 +1,75 @@
+//Monster Generator
+
+#include <iostream>
+using namespace std;
+#include <ctime>
+#include <cstdlib>
+
+void monster();
+
+int main() {
+	system("color 0a");
+	srand(time(NULL));
+
+	while (true) { 
+		monster();
+		system("pause");
+
+	}
+
+}
+
+void monster() {
+	int num = rand() % 12;
+	switch (num) {
+	
+	case 0:
+		cout << "You have encountered a Dragon" << endl;
+		break;
+
+	case 1:
+		cout << "You have encountered a Sphinx" << endl;
+		break;
+
+	case 2:
+		cout << "You have encountered a Griffin" << endl;
+		break;
+
+	case 3:
+		cout << "You have encountered a Gnome" << endl;
+		break;
+
+	case 4:
+		cout << "You have encountered a Gnome" << endl;
+		break;
+
+	case 5:
+		cout << "You have encountered a Gnome" << endl;
+		break;
+
+	case 6:
+		cout << "You have encountered a Gnome" << endl;
+		break;
+
+	case 7:
+		cout << "You have encountered a Hippogriff" << endl;
+		break;
+
+	case 8:
+		cout << "You have encountered a Ghoul" << endl;
+		break;
+
+	case 9:
+		cout << "You have encountered a Ghoul" << endl;
+		break;
+
+	case 10:
+		cout << "You have encountered a Leprechaun" << endl;
+		break;
+	case 11:
+		cout << "You have encountered a Werewolf" << endl;
+		break;
+    
+	}
+
+}
