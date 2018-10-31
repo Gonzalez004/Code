@@ -1,0 +1,34 @@
+#include <iostream>
+#include <Windows.h>
+#include <stdlib.h>
+using namespace std;
+
+int input;
+
+int main() {
+	cout << "Jukebox" << endl;
+	cout << "Enter a number 1-4 to play your mystery song" << endl;
+
+	cin >> input;
+
+	switch (input) {
+	case 1: 
+		PlaySound(TEXT("Fly Me To The Moon with Lyrics.wav"), NULL, SND_FILENAME);
+		break;
+	case 2:
+		PlaySound(TEXT("TheOnlyWayIsUp.wav"), NULL, SND_FILENAME);
+		break;
+	case 3:
+		PlaySound(TEXT("YouNameIt.wav"), NULL, SND_FILENAME);
+		break;
+	case 4:
+		PlaySound(TEXT("Zapateado_Encabronado_-_Alacranes.wav"), NULL, SND_FILENAME);
+	}
+
+
+
+
+
+
+
+}
