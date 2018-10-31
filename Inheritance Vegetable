@@ -1,0 +1,61 @@
+//Create parent class vegetable and two child classes, potato and radish.Their draw functions should randomly place them around the game screen.Bonus points to get them to rotate : D
+#include <iostream>
+#include <allegro5\allegro.h>
+#include <allegro5\allegro_image.h>
+#include <ctime>
+using namespace std;
+class Vegetable { };
+class Potato : public Vegetable {
+public:
+	void InitiPotato(int Xpos, int Ypos, ALLEGRO_BITMAP *Image);
+private:
+	int X;
+	int Y;
+};
+class Radish : public Vegetable {
+public:
+	void InitiRadish(int Xpos2, int Ypos2, ALLEGRO_BITMAP *Image2);
+private:
+	int X2;
+	int Y2;
+};
+int numx;
+int numy;
+int numx2;
+int numy2;
+int main() {
+	al_init();
+	al_init_image_addon();
+	srand(time(NULL));
+	ALLEGRO_BITMAP *Photo1 = al_load_bitmap("Potato2.jpg"); //loads bitmap from folders
+	ALLEGRO_BITMAP *Photo2 = al_load_bitmap("Radish.jpg"); //loads bitmap from folders
+	ALLEGRO_DISPLAY *GameWindow = NULL; //Create a Display Window
+	GameWindow = al_create_display(900, 900); //Create Your Game Window
+	al_set_window_position(GameWindow, 500, 0); //Positions Widnow on Screen
+	al_set_window_title(GameWindow, "Ferny's Game"); //Window Title
+	Potato Steve;
+	Radish Ravisher;
+	while (true) {
+		numx = rand() % 900;
+		numy = rand() % 900;
+		numy2 = rand() % 900;
+		numx2 = rand() % 900;
+		al_clear_to_color(al_map_rgb(0, 0, 0)); //Set GameWIndow Color;
+		Steve.InitiPotato(numx, numy, Photo1);
+		Ravisher.InitiRadish(numx2, numy2, Photo2);
+		al_flip_display(); //Write whatever is in memory to the screen
+		//al_rest(1); //Pauses Game			 
+	}
+	al_destroy_display(GameWindow); //Clear Memory
+
+}
+void Potato::InitiPotato(int Xpos, int Ypos, ALLEGRO_BITMAP *Image) {
+	X = Xpos;
+	Y = Ypos;
+	al_draw_bitmap(Image, X, Y, 0);
+}
+void Radish::InitiRadish(int Xpos2, int Ypos2, ALLEGRO_BITMAP *Image2) {
+	X2 = Xpos2;
+	Y2 = Ypos2;
+	al_draw_bitmap(Image2, X2, Y2, 0);
+}
