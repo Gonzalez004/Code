@@ -1,0 +1,73 @@
+#include <iostream>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
+#include <ctime>
+#include <string>
+using namespace std;
+
+string input;
+
+
+int main() {
+	while (input.compare("quit") != 0) {
+	int a = rand() % 300;
+	int b = rand() % 300;
+	int c = rand() % 300;
+	int d = rand() % 300;
+	int e = rand() % 300;
+	int f = rand() % 300;
+	int g = rand() % 120;
+	int h = rand() % 120;
+	int i = rand() % 120;
+
+	int j = rand() % 300;
+	int k = rand() % 300;
+	int l = rand() % 300;
+	int m = rand() % 120;
+	int n = rand() % 120;
+	int o = rand() % 120;
+
+	int p = rand() % 300;
+	int q = rand() % 300;
+	int r = rand() % 300;
+	int s = rand() % 300;
+	int t = rand() % 120;
+	int u = rand() % 120;
+	int v = rand() % 120;
+
+	srand(time(NULL));
+	ALLEGRO_DISPLAY *display = NULL;
+	ALLEGRO_DISPLAY *display2 = NULL;
+	ALLEGRO_DISPLAY *display3 = NULL;
+
+	al_init();
+	al_init_primitives_addon();
+
+	display = al_create_display(300, 300);
+	al_set_window_position(display, 0, 0);
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+	al_draw_filled_triangle(a, b, c, d, e, f, al_map_rgb(g, h, i));
+	al_flip_display();
+	
+
+	display2 = al_create_display(300, 300);
+	al_set_window_position(display2, 1000, 0);
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+	al_draw_filled_circle(j, k, l, al_map_rgb(m, n, o));
+	al_flip_display();
+	
+
+	display3 = al_create_display(300, 300);
+	al_set_window_position(display3, 1000, 700);
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+	al_draw_filled_rectangle(p, q, r, s, al_map_rgb(t, u, v));
+	al_flip_display();
+	al_rest(2.0);
+
+	al_destroy_display(display);
+	al_destroy_display(display2);
+	al_destroy_display(display3);
+}
+		return 0;
+	
+}
