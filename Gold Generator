@@ -1,0 +1,32 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+int Gold = 0;
+void GoldDrop();
+int main() {
+	srand(time(NULL));
+	while (true) {
+		GoldDrop();
+		system("pause");
+		cout << endl;
+	}
+}
+void GoldDrop() {
+	int number = rand() % 100;
+	if (number <= 29) {
+		Gold = Gold + 1;
+		cout << "One gold was added" << endl;
+	}
+	else if (number > 30 && number <= 49) {
+		Gold = Gold + 5;
+		cout << "Five gold was added" << endl;
+	}
+	else if (number > 50 && number <= 89) {
+		Gold = Gold + 0;
+	}
+	else if (number > 90 && number <= 100) {
+		Gold = Gold - 10;
+		cout << "A theif took ten of your gold" << endl;
+	}
+	cout << "You have " << Gold << " Gold" << endl;
+}
