@@ -1,0 +1,842 @@
+#include <iostream>
+#include <Windows.h>
+#include<stdlib.h> 
+#include <String>
+#include <ctime>
+#include <cstdlib>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
+; using namespace std;
+string input;
+string name;
+string answer;
+int room = 1;
+int health = 100;
+void monster();
+void shutdown();
+void tryagain();
+int yes = 0;
+
+int main() {
+	al_init();
+	al_install_audio();
+	al_init_acodec_addon();
+	ALLEGRO_SAMPLE* sample = NULL;
+	al_reserve_samples(1);
+
+	srand(time(NULL));
+	string inventory[5];
+	for (int i = 0; i < 5; i++)
+
+		system("color a0");
+	Beep(750, 100);
+
+	Beep(300, 250);
+	Sleep(25);
+	Beep(300, 250);
+	Sleep(25);
+	Beep(300, 250);
+	Sleep(25);
+
+	Beep(250, 250);
+	Sleep(25);
+
+	Beep(350, 63);
+	Beep(300, 250);
+	Sleep(25);
+
+	Beep(250, 250);
+	Sleep(25);
+
+	Beep(350, 63);
+	Beep(300, 250);
+	Sleep(25);
+
+	cout << " " << endl;
+	cout << "/$$$$$$$$       /$$" << endl;
+	cout << "| $$_____/      | $$" << endl;
+	cout << "| $$        /$$$$$$$ /$$   /$$  /$$$$$$  /$$$$$$$" << endl;
+	cout << "| $$$$$    /$$__  $$| $$  | $$ |____  $$| $$__  $$" << endl;
+	cout << "| $$__/   | $$  | $$| $$  | $$  /$$$$$$$| $$  \ $$" << endl;
+	cout << "| $$      | $$  | $$| $$  | $$ /$$__  $$| $$  | $$" << endl;
+	cout << "| $$$$$$$$|  $$$$$$$|  $$$$$$$|  $$$$$$$| $$  | $$" << endl;
+	cout << "|________/ \_______/ \____  $$ \_______/|__/  |__/" << endl;
+	cout << "                   /$$  | $$" << endl;
+	cout << "                  |  $$$$$$/" << endl;
+	cout << "                    \______/" << endl;
+	cout << "Welcome to Edyan the game" << endl;
+	cout << "____________________________________________________" << endl;
+	cout << "What is your name younge adventure?" << endl;
+	getline(cin, name);
+	cout << "Welcome " << name << endl;
+
+	cout << "____________________________________________________" << endl;
+	cout << "Instruction:" << endl;
+	cout << "Type 'health' when you want to know your health" << endl;
+	cout << "Type 'quit' when you want to exit the game" << endl;
+	cout << "Type 'bag' when you want to see your inventory" << endl;
+	cout << "type 'North, South, West, or East to move rooms'" << endl;
+	cout << "When attacked type 'ok' to contuine " << endl;
+	cout << "Their might be hidden room so LOOK OUT!" << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+
+
+	cout << "Introduction:" << endl;
+	cout << "____________________________________________________" << endl;
+	cout << "You find yourself walking inside a old bar" << endl;
+	cout << "You hear an old man telling a group of people in the corner, about something... " << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+	cout << "You walk over to hear to about a mysterious cave filled with riches!" << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+	cout << "You think to yourself" << endl;
+	cout << "'This is the money I need for my family, so we can finally be free from our cruel master'" << endl;
+	system("pause");
+	cout << "You ask the old man where this cave is" << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+	cout << "He replies with," << endl;
+	cout << "'Now now...who may you be?...'" << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+	cout << "You reply with," << endl;
+	cout << "'My name is " << name << endl;
+	cout << "and I wish to go find these riches within the cave'" << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+	cout << "The old man says," << endl;
+	cout << "'Young man, anyone who dare venture within the cave has died, but very well'" << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+	cout << "He gives you the location of the cave, while everyone else around you laughs" << endl;
+	system("pause");
+	cout << "____________________________________________________" << endl;
+
+	while (input.compare("quit") != 0) {
+		switch (room) {
+
+		case 1:
+			system("color b0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 1! You can go North" << endl;
+
+			getline(cin, input);
+
+			if (input.compare("North") == 0)
+				room = 2;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 2:
+			system("color f4");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 2!" << endl;
+			cout << "You can go North or South" << endl;
+
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 3;
+			else if (input.compare("South") == 0)
+				room = 1;
+			else if (input.compare("Yes") == 0)
+				room = 1;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 3:
+			system("color 9a");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 3!" << endl;
+			monster();
+			shutdown();
+			tryagain();
+			cout << "You can go North, South, or East" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 4;
+			else if (input.compare("South") == 0)
+				room = 2;
+			else if (input.compare("East") == 0)
+				room = 9;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 4:
+			system("color 3f");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 4!" << endl;
+
+			cout << "You can go South or West" << endl;
+			cin >> input;
+
+			if (input.compare("South") == 0)
+				room = 3;
+			else if (input.compare("West") == 0)
+				room = 5;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 5:
+			system("color e0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 5!" << endl;
+			cout << "You can go West or East" << endl;
+			cin >> input;
+
+			if (input.compare("West") == 0)
+				room = 6;
+			else if (input.compare("East") == 0)
+				room = 4;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 6:
+			system("color b0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 6!" << endl;
+			cout << "You can go North, South, or East" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 8;
+			else if (input.compare("South") == 0)
+				room = 7;
+			else if (input.compare("East") == 0)
+				room = 5;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 7:
+			system("color 40");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 7! You died1" << endl;
+			health = 0;
+			system("pause");
+			tryagain;
+
+			break;
+
+		case 8:
+			system("color b0");
+			monster();
+			shutdown();
+			tryagain();
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 8!" << endl;
+			cout << "You can go South" << endl;
+			cin >> input;
+
+			if (input.compare("South") == 0)
+				room = 6;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 9:
+			system("color f4");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 9!" << endl;
+			cout << "You can go West or East" << endl;
+			cin >> input;
+
+			if (input.compare("West") == 0)
+				room = 3;
+			else if (input.compare("East") == 0)
+				room = 10;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 10:
+			system("color 9a");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 10!" << endl;
+			monster();
+			shutdown();
+			tryagain();
+			cout << "You can go North, South, West, or East" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 13;
+			else if (input.compare("South") == 0)
+				room = 11;
+			else if (input.compare("West") == 0)
+				room = 9;
+			else if (input.compare("East") == 0)
+				room = 12;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 11:
+			system("color 3f");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 11!" << endl;
+			cout << "You can go North" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 10;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 12:
+			system("color 40");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 12! You died1" << endl;
+			system("pause");
+			cout << "____________________________________________________" << endl;
+			cout << "Good Game" << endl;
+			cout << "Try again? Yes or No?" << endl;
+
+			cin >> input;
+
+			if (input.compare("Yes") == 0) {
+				room = 1;
+				cout << "____________________________________________________" << endl;
+			}
+			else if (input.compare("No") == 0) {
+				exit(0);
+				system("pause");
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 13:
+			system("color e0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 13!" << endl;
+			monster();
+			shutdown();
+			tryagain();
+			cout << "You can go North or South" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 14;
+			else if (input.compare("South") == 0)
+				room = 10;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 14:
+			system("color b0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 14!" << endl;
+			cout << "You can go North or South" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 15;
+			else if (input.compare("South") == 0)
+				room = 13;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 15:
+			system("color f4");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 15!" << endl;
+			cout << "You can go North, South, West, or East" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 18;
+			else if (input.compare("South") == 0)
+				room = 14;
+			else if (input.compare("West") == 0)
+				room = 17;
+			else if (input.compare("East") == 0)
+				room = 16;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 16:
+			system("color 9a");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 16!" << endl;
+			cout << "You can go West" << endl;
+			cin >> input;
+
+			if (input.compare("West") == 0)
+				room = 15;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 17:
+			system("color 3f");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 17!" << endl;
+			monster();
+			shutdown();
+			tryagain();
+			cout << "You can go West or East" << endl;
+			cin >> input;
+
+			if (input.compare("West") == 0)
+				room = 19;
+			else if (input.compare("East") == 0)
+				room = 15;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 18:
+			system("color e0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 18!" << endl;
+			cout << "You can go North or South" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 20;
+			else if (input.compare("South") == 0)
+				room = 15;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 19:
+			system("color 40");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 19! You died1" << endl;
+			system("pause");
+			cout << "____________________________________________________" << endl;
+			cout << "Good Game" << endl;
+			cout << "Try again? Yes or No?" << endl;
+
+			cin >> input;
+
+			if (input.compare("Yes") == 0) {
+				room = 1;
+				cout << "____________________________________________________" << endl;
+			}
+			else if (input.compare("No") == 0) {
+				exit(0);
+				system("pause");
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 20:
+			system("color b0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 20!" << endl;
+			monster();
+			shutdown();
+			tryagain();
+			cout << "You can go North, South, or West" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 23;
+			else if (input.compare("South") == 0)
+				room = 18;
+			else if (input.compare("West") == 0)
+				room = 21;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 21:
+			system("color f4");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 21!" << endl;
+			cout << "You can go West or East" << endl;
+			cin >> input;
+
+			if (input.compare("West") == 0)
+				room = 24;
+			else if (input.compare("East") == 0)
+				room = 20;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 22:
+			system("color 9a");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 22!" << endl;
+			cout << "You can go North" << endl;
+			cin >> input;
+
+			if (input.compare("North") == 0)
+				room = 24;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 23:
+			system("color 40");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 23! You died1" << endl;
+			system("pause");
+			cout << "____________________________________________________" << endl;
+			cout << "Good Game" << endl;
+			cout << "Try again? Yes or No?" << endl;
+
+			cin >> input;
+
+			if (input.compare("Yes") == 0) {
+				room = 1;
+				cout << "____________________________________________________" << endl;
+			}
+			else if (input.compare("No") == 0) {
+				exit(0);
+				system("pause");
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 24:
+			system("color 3f");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 24!" << endl;
+			monster();
+			shutdown();
+			tryagain();
+			cout << "You can go South, West, or East" << endl;
+			cin >> input;
+
+			if (input.compare("South") == 0)
+				room = 22;
+			else if (input.compare("West") == 0)
+				room = 25;
+			else if (input.compare("East") == 0)
+				room = 21;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		case 25:
+			system("color e0");
+			cout << "____________________________________________________" << endl;
+			cout << "You are in Room 24!" << endl;
+			cout << "You can go East" << endl;
+			cin >> input;
+
+			if (input.compare("East") == 0)
+				room = 24;
+			else if (input.compare("quit") == 0)
+				exit(0);
+			else if (input.compare("health") == 0)
+				cout << health << endl;
+			else if (input.compare("bag") == 0) {
+				cout << "Here's your inventory" << endl;
+				for (int i = 0; i < 5; i++)
+					cout << inventory[i] << endl;
+			}
+			else
+				cout << "Invalid Input" << endl;
+
+			break;
+
+		}
+	}
+}
+
+
+
+void monster() {
+	int number = rand() % 100 + 1;
+	if (number <= 10) {
+		cout << "A Pegasus appeared to give you a +15 health" << endl;
+		health = health + 15;
+		cout << "Your health is now " << health << endl;
+	}
+	else if (number > 10 && number <= 15) {
+		cout << "You've encounter a rare Unicorn that gives you +25 health" << endl;
+		health = health + 25;
+		cout << "Your health is now " << health << endl;
+	}
+	else if (number > 16 && number <= 19) {
+		cout << "You've encounter a Dragon!" << endl;
+		health = health - 90;
+		cout << "Your health is now " << health << endl;
+	}
+	else if (number > 20 && number <= 29) {
+		cout << "Harambe's Spirit has risen from the ground to give you life" << endl;
+		health = health + 10;
+		cout << "Your health is now " << health << endl;
+	}
+	else if (number > 20 && number <= 43) {
+		cout << "A small dark fairy has attacked you from no where" << endl;
+		health = health - 20;
+		cout << "Your health is now " << health << endl;
+	}
+	else if (number > 44 && number <= 67) {
+		cout << "A group of gnomes attacked you from no where" << endl;
+		health = health - 30;
+		cout << "Your health is now " << health << endl;
+	}
+	else if (number > 68 && number <= 83) {
+		cout << "A  werewolf is hungry an attacks you" << endl;
+		health = health - 40;
+		cout << "Your health is now " << health << endl;
+	}
+	else {
+		cout << "A Dino appeaers a says,'RAWR XD'" << endl;
+		health = health - 15;
+		cout << "Your health is now " << health << endl;
+	}
+}
+void shutdown() {
+	if (health == 0) {
+		system("color 40");
+		cout << "You have no more life left" << endl;
+		system("pause");
+	}
+	else if (health <= -1) {
+		system("color 40");
+		cout << "FATALITY" << endl;
+		cout << "You have suffer a grusome death" << endl;
+		system("pause");
+	}
+
+}
+void tryagain() {
+	if (health <= 0) {
+		system("color 40");
+		cout << "____________________________________________________" << endl;
+		cout << "Good Game" << endl;
+		cout << "Try Again? Yes or No?" << endl;
+
+		cin >> answer;
+
+		if (answer.compare("Yes") == 0) {
+			health = 100;
+			room = 1;
+		}
+
+
+		else if (answer.compare("No") == 0) {
+			system("pause");
+			exit(0);
+		}
+		else if (answer.compare("quit") == 0)
+			exit(0);
+	}
+}
