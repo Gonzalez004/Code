@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+int number;
+
+int main() {
+	
+	cout << "Hello" << endl;
+	system("pause");
+	cout << "Which Dragon Ball Z charcter are you?" << endl;
+	cout << "Enter You Power Level to find out" << endl;
+
+	cin >> number;
+	
+	if (number <= 10) {
+		cout << "You are Master Roshi" << endl;
+	}
+	else if (number > 10 && number <= 150) {
+		cout << "You are Cell" << endl;
+	}
+	else if (number > 151 && number <= 190) {
+		cout << "You are Gohan" << endl;
+	}
+	else if (number > 191 && number <= 290) {
+		cout << "You are Android #18" << endl;
+	}
+	else if (number > 291 && number <= 430) {
+		cout << "You are Broly" << endl;
+	}
+	else if (number > 431 && number <= 670) {
+		cout << "You are (Majin, Super, Kid, Evil) Buu" << endl;
+	}
+	else if (number > 671 && number <= 830) {
+		cout << "You are Vegeta" << endl;
+	}
+	else if (number > 831 && number <= 990) {
+		cout << "You are Goku" << endl;
+	}
+	else if (number > 991) {
+		cout << "You are Trunks" << endl;
+	}
+	system("pause");
+}
