@@ -1,0 +1,93 @@
+#include <iostream>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
+#include <ctime>
+
+using namespace std;
+
+class Spot {
+public:
+	void Draw();
+	void InitCircle(int X, int Y, int Rad, int R, int G, int B);
+private:
+	int Radius;
+	int ColorR;
+	int ColorB;
+	int ColorG;
+	int Xpos;
+	int Ypos;
+};
+
+int main() {
+	al_init();
+	al_init_primitives_addon();
+	srand(time(NULL));
+	ALLEGRO_DISPLAY *Display = NULL;
+	Display = al_create_display(900, 900);
+	//while (true) {
+	int x = rand() % 900;
+	int x2 = rand() % 900;
+	int x3 = rand() % 900;
+	int x4 = rand() % 900;
+	int x5 = rand() % 900;
+	int y = rand() % 900;
+	int y2 = rand() % 900;
+	int y3 = rand() % 900;
+	int y4 = rand() % 900;
+	int y5 = rand() % 900;
+	int radius = rand() % 200;
+	int radius2 = rand() % 200;
+	int radius3 = rand() % 200;
+	int radius4 = rand() % 200;
+	int radius5 = rand() % 200;
+	int red = rand() % 250;
+	int red2 = rand() % 250;
+	int red3 = rand() % 250;
+	int red4 = rand() % 250;
+	int red5 = rand() % 250;
+	int green = rand() % 250;
+	int green2 = rand() % 250;
+	int green3 = rand() % 250;
+	int green4 = rand() % 250;
+	int green5 = rand() % 250;
+	int blue = rand() % 250;
+	int blue2 = rand() % 250;
+	int blue3 = rand() % 250;
+	int blue4 = rand() % 250;
+	int blue5 = rand() % 250;
+
+	Spot Circle1;
+	Spot Circle2;
+	Spot Circle3;
+	Spot Circle4;
+	Spot Circle5;
+
+	Circle1.InitCircle(x, y, radius, red, green, blue);
+	Circle2.InitCircle(x2, y2, radius2, red2, green2, blue2);
+	Circle3.InitCircle(x3, y3, radius3, red3, green3, blue3);
+	Circle4.InitCircle(x4, y4, radius4, red4, green4, blue4);
+	Circle5.InitCircle(x5, y5, radius5, red5, green5, blue5);
+
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+
+	Circle1.Draw();
+	Circle2.Draw();
+	Circle3.Draw();
+	Circle4.Draw();
+	Circle5.Draw();
+
+	al_flip_display();
+	//}
+	system("pause");
+}
+void Spot::InitCircle(int X, int Y, int Rad, int R, int G, int B) {
+	Xpos = X;
+	Ypos = Y;
+	Radius = Rad;
+	ColorR = R;
+	ColorG = G;
+	ColorB = B;
+}
+void Spot::Draw() {
+	al_draw_filled_circle(Xpos, Ypos, Radius, al_map_rgb(ColorR, ColorG, ColorB));
+}
