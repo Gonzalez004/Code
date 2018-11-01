@@ -1,0 +1,97 @@
+/*Write an advanced version of the number guessing game from Monday.
+In this version, *you* choose a number,
+and the computer continuously guesses what number you picked until it guesses correctly.
+After each guess, you'll tell the computer if it's too high or low,
+which helps it adjust its guess.
+At the end, it prints out how many turns it took to guess,
+and asks if you want to play again.
+Try to make your program take the smallest number of guesses it can!*/
+
+#include <iostream>
+#include <string>
+#include <ctime>
+using namespace std;
+int Room = 0;
+enum Room { Start, Guess, PlayAgain };
+int YourNumber;
+int ComputerGuess = 50;
+char Input;
+int HighNumber = 101;
+int LowNumber = -1;
+int Temp;
+void TooHigh();
+void TooLow();
+int score = 0;
+int main() {
+	srand(time(NULL));
+	while (true) {
+		switch (Room) {
+		case Start:
+			cout << "Put in a number for the computer to guess" << endl;
+			cin >> YourNumber;
+			Room = Guess;
+			break;
+		case Guess:
+			cout << "Your number is " << YourNumber << endl;
+			cout << "The computer guessed " << ComputerGuess << endl;
+			
+			if (ComputerGuess == YourNumber) {
+				cout << "The computer guessed right!" << endl;
+				cout << "It took your computer " << score << " turns"<< endl;
+				system("pause");
+			}
+			else {
+				cout << "Is it Too High or Too low?" << endl;
+				cin >> Input;
+				if (Input == 'H') {
+					HighNumber = ComputerGuess;
+					TooHigh();
+					Room = Guess;
+				}
+				else if (Input == 'L') {
+					LowNumber = ComputerGuess;
+					TooLow();
+					Room = Guess;
+				}
+				else if (Input == 'E') {
+					exit(0);
+				}
+			}
+			break;
+		case PlayAgain:
+			cout << "Do you want to play again? Y/N?" << endl;
+			cin >> Input;
+			if (Input == 'Y') {
+				Room = Start;
+			}
+			else if (Input == 'N') {
+				exit(0);
+			}
+			else {
+				Room = PlayAgain;
+			}
+
+			break;
+		}//Switch Loop
+	}//While Loop
+	return 0;
+}//Main Loop
+
+//50 is start
+void TooHigh() {
+	ComputerGuess = ComputerGuess / 2;
+	Temp = ComputerGuess;
+	while (ComputerGuess > HighNumber || ComputerGuess < LowNumber || ComputerGuess == Temp) {
+		ComputerGuess = rand() % HighNumber;
+	}
+	score++;
+
+}
+void TooLow() {
+	ComputerGuess = (ComputerGuess + 100) / 2;
+	Temp = ComputerGuess;
+	while (ComputerGuess > HighNumber || ComputerGuess < LowNumber || ComputerGuess == Temp) {
+		ComputerGuess = rand() % HighNumber;
+	}
+	score++;
+}
