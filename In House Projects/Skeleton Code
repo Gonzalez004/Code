@@ -6,96 +6,96 @@
 using namespace std;
 
 int main() {
-	ALLEGRO_DISPLAY *display = NULL;
-	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-	ALLEGRO_TIMER *timer = NULL;
-	ALLEGRO_BITMAP *square = NULL;
-	ALLEGRO_BITMAP *bouncer = NULL;
+	ALLEGRO_DISPLAY *Gamewindow = NULL;
+	ALLEGRO_EVENT_QUEUE *Event_Queue = NULL;
+	ALLEGRO_TIMER *Timer = NULL;
+	ALLEGRO_BITMAP *Square = NULL;
+	ALLEGRO_BITMAP *Bouncer = NULL;
 
-	float square_x = 20;
-	float square_y = 395;
+	float Square_X = 20;
+	float Square_Y = 395;
 
-	float bouncer_x = 800;
-	float bouncer_y = 500;
+	float Bouncer_X = 800;
+	float Bouncer_Y = 500;
 
-	float bouncer_dx = -4.0, bouncer_dy = 4.0;
+	float Bouncer_Dx = -4.0, Bouncer_Dy = 4.0;
 
-	bool key[4] = { false, false, false, false };
+	bool Key[4] = { false, false, false, false };
 
-	bool redraw = true;
-	bool doexit = false;
+	bool Re_Draw = true;
+	bool Do_Exit = false;
 
 	al_init();
 	al_install_keyboard();
 	al_init_primitives_addon();
 
-	timer = al_create_timer(.01);
-	display = al_create_display(1900, 900); //640 480
-	event_queue = al_create_event_queue();
+	Timer = al_create_timer(.01);
+	Gamewindow = al_create_display(1900, 900); //640 480
+	Event_Queue = al_create_event_queue();
 
-	square = al_create_bitmap(15, 110);
-	al_set_target_bitmap(square);
+	Square = al_create_bitmap(15, 110);
+	al_set_target_bitmap(Square);
 	al_clear_to_color(al_map_rgb(500, 0, 0));
 
 
-	bouncer = al_create_bitmap(15, 15);
-	al_set_target_bitmap(bouncer);
+	Bouncer = al_create_bitmap(15, 15);
+	al_set_target_bitmap(Bouncer);
 	al_clear_to_color(al_map_rgb(50, 510, 50));
 
 
-	al_set_target_bitmap(al_get_backbuffer(display));
+	al_set_target_bitmap(al_get_backbuffer(Gamewindow));
 
-	al_register_event_source(event_queue, al_get_display_event_source(display));
-	al_register_event_source(event_queue, al_get_timer_event_source(timer));
-	al_register_event_source(event_queue, al_get_keyboard_event_source());
+	al_register_event_source(Event_Queue, al_get_display_event_source(Gamewindow));
+	al_register_event_source(Event_Queue, al_get_timer_event_source(Timer));
+	al_register_event_source(Event_Queue, al_get_keyboard_event_source());
 
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 
 	al_flip_display();
 
-	al_start_timer(timer);
+	al_start_timer(Timer);
 
-	while (!doexit)
+	while (!Do_Exit)
 	{
 
 		ALLEGRO_EVENT ev;
-		al_wait_for_event(event_queue, &ev);
+		al_wait_for_event(Event_Queue, &ev);
 		if (ev.type == ALLEGRO_EVENT_TIMER) {
-			cout << bouncer_dx << ", " << bouncer_dy << endl;
+			cout << Bouncer_Dx << ", " << Bouncer_Dy << endl;
 
-			if (bouncer_x < 0 || bouncer_x > 1900 - 15) {
-				bouncer_dx = -bouncer_dx;
+			if (Bouncer_X < 0 || Bouncer_X > 1900 - 15) {
+				Bouncer_Dx = -Bouncer_Dx;
 			}
-			if (bouncer_y < 0 || bouncer_y > 900 - 15) {
-				bouncer_dy = -bouncer_dy;
+			if (Bouncer_Y < 0 || Bouncer_Y > 900 - 15) {
+				Bouncer_Dy = -Bouncer_Dy;
 			}
 
-			if (bouncer_x < 0) {
-		
-				if (bouncer_dx > 1 && bouncer_dx < 10) {
-					bouncer_dx = bouncer_dx;
+			if (Bouncer_X < 0) {
+
+				if (Bouncer_Dx > 1 && Bouncer_Dx < 10) {
+					Bouncer_Dx = Bouncer_Dx;
 				}
 				else {
-					bouncer_dx = bouncer_dx;
+					Bouncer_Dx = Bouncer_Dx;
 				}
-				if (bouncer_dy > 1 && bouncer_dy < 10) {
-					bouncer_dy = bouncer_dy;
+				if (Bouncer_Dy > 1 && Bouncer_Dy < 10) {
+					Bouncer_Dy = Bouncer_Dy;
 				}
 				else {
-					bouncer_dy = bouncer_dy;
+					Bouncer_Dy = Bouncer_Dy;
 				}
 			}
-			bouncer_x += bouncer_dx;
-			bouncer_y += bouncer_dy;
-///////////////////////////////////////////////////////////////////////
-			if (key[0] && square_y >= 0) {
-				square_y -= 4.0;
+			Bouncer_X += Bouncer_Dx;
+			Bouncer_Y += Bouncer_Dy;
+			///////////////////////////////////////////////////////////////////////
+			if (Key[0] && Square_Y >= 0) {
+				Square_Y -= 4.0;
 			}
-			if (key[1] && square_y <= 900 - 110) {
-				square_y += 4.0;
+			if (Key[1] && Square_Y <= 900 - 110) {
+				Square_Y += 4.0;
 			}
 			///////////////////////////////////////////////////////////////////////
-			redraw = true;
+			Re_Draw = true;
 		}
 
 
@@ -108,10 +108,10 @@ int main() {
 			switch (ev.keyboard.keycode) {
 				///////////////////////////////////////////////////////////////////////
 			case ALLEGRO_KEY_W:
-				key[0] = true;
+				Key[0] = true;
 				break;
 			case ALLEGRO_KEY_S:
-				key[1] = true;
+				Key[1] = true;
 				break;
 
 			}
@@ -120,37 +120,36 @@ int main() {
 			switch (ev.keyboard.keycode) {
 				///////////////////////////////////////////////////////////////////////
 			case ALLEGRO_KEY_W:
-				key[0] = false;
+				Key[0] = false;
 				break;
 			case ALLEGRO_KEY_S:
-				key[1] = false;
+				Key[1] = false;
 				break;
 
 			case ALLEGRO_KEY_ESCAPE:
-				doexit = true;
+				Do_Exit = true;
 				break;
 			}
 		}
 
 
-		if (redraw && al_is_event_queue_empty(event_queue)) {
-			redraw = false;
+		if (Re_Draw && al_is_event_queue_empty(Event_Queue)) {
+			Re_Draw = false;
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 
-			al_draw_bitmap(square, square_x, square_y, 0);
+			al_draw_bitmap(Square, Square_X, Square_Y, 0);
 
-			al_draw_bitmap(bouncer, bouncer_x, bouncer_y, 0);
+			al_draw_bitmap(Bouncer, Bouncer_X, Bouncer_Y, 0);
 
 			al_flip_display();
 		}
 	}
 
-	al_destroy_bitmap(square);
-
-	al_destroy_bitmap(bouncer);
-	al_destroy_timer(timer);
-	al_destroy_display(display);
-	al_destroy_event_queue(event_queue);
+	al_destroy_bitmap(Square);
+	al_destroy_bitmap(Bouncer);
+	al_destroy_timer(Timer);
+	al_destroy_display(Gamewindow);
+	al_destroy_event_queue(Event_Queue);
 
 	return 0;
 }
